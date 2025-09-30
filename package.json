@@ -1,1 +1,16 @@
-
+{
+  "name": "shrtspace",
+  "version": "1.0.0",
+  "description": "Premium URL Shortener",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build process needed'",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.0.0"
+  }
+}
