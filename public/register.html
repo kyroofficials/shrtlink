@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ShrtSpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" href="assets/icons/favicon.ico">
+</head>
+<body class="dark-theme">
+    <div class="auth-container">
+        <div class="auth-card scale-in">
+            <div class="auth-header">
+                <img src="assets/icons/logo.svg" alt="ShrtSpace" class="auth-logo">
+                <h2>Create Account</h2>
+                <p>Join thousands of users shortening their links</p>
+            </div>
+            
+            <form id="registerForm" class="auth-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">
+                    <span>Create Account</span>
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
 
+    <script src="js/auth.js"></script>
+</body>
+</html>
