@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShrtSpace - Shortlink Premium</title>
+    <title>ShrtSpace - Premium URL Shortener</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="icon" href="assets/icons/favicon.ico">
 </head>
 <body class="dark-theme">
-    <!-- Animated Background -->
-    <div id="particles-js"></div>
-    
     <!-- Navigation -->
     <nav class="navbar slide-in-top">
         <div class="nav-brand">
@@ -19,10 +16,9 @@
             <span>ShrtSpace</span>
         </div>
         <div class="nav-links">
-            <a href="#features">Fitur</a>
-            <a href="#pricing">Harga</a>
+            <a href="#features">Features</a>
             <a href="login.html" class="btn-outline">Login</a>
-            <a href="register.html" class="btn-primary">Daftar</a>
+            <a href="register.html" class="btn-primary">Sign Up</a>
         </div>
     </nav>
 
@@ -30,16 +26,16 @@
     <section class="hero">
         <div class="hero-content fade-in-up">
             <h1 class="hero-title">
-                <span class="gradient-text">Pendekin</span> Link Mu 
-                <br>Dalam <span class="typewriter"></span>
+                <span class="gradient-text">Shorten</span> Your Links 
+                <br>In <span class="typewriter"></span>
             </h1>
-            <p class="hero-subtitle">Shortlink premium dengan analytics lengkap, custom domain, dan tampilan yang memukau</p>
+            <p class="hero-subtitle">Premium URL shortener with detailed analytics, custom domains, and stunning design</p>
             
             <div class="url-shortener-box pulse">
                 <div class="input-group">
-                    <input type="text" id="longUrl" placeholder="https://website-saya-yang-sangat-panjang-sekali.com/ini/juga/panjang/banget" class="url-input">
+                    <input type="text" id="longUrl" placeholder="https://your-very-long-website-url-here.com/this/is/also/very/long" class="url-input">
                     <button onclick="createShortlink()" class="shorten-btn">
-                        <span>Buat Shortlink</span>
+                        <span>Create Shortlink</span>
                         <svg class="rocket-icon" viewBox="0 0 24 24">
                             <path d="M13 3v10l8-7-8-3zm-2 0L3 6l8 3V3zM3 13l8 3v7l-8-10z"/>
                         </svg>
@@ -57,34 +53,33 @@
                 <span>shrt.space/tokopedia</span>
             </div>
             <div class="floating-card card-3">
-                <span>shrt.space/website</span>
+                <span>shrt.space/mywebsite</span>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
-        <h2 class="section-title">Fitur <span class="gradient-text">Premium</span></h2>
+        <h2 class="section-title">Premium <span class="gradient-text">Features</span></h2>
         <div class="features-grid">
             <div class="feature-card scale-in">
                 <div class="feature-icon">🚀</div>
-                <h3>Super Cepat</h3>
-                <p>Redirect instan dengan server global</p>
+                <h3>Super Fast</h3>
+                <p>Instant redirects with global servers</p>
             </div>
             <div class="feature-card scale-in" style="animation-delay: 0.2s;">
                 <div class="feature-icon">📊</div>
-                <h3>Analytics Detail</h3>
-                <p>Track clicks, location, device pengunjung</p>
+                <h3>Detailed Analytics</h3>
+                <p>Track clicks, locations, and visitor devices</p>
             </div>
             <div class="feature-card scale-in" style="animation-delay: 0.4s;">
                 <div class="feature-icon">🎨</div>
-                <h3>Custom Name</h3>
-                <p>Buat shortlink dengan nama sendiri</p>
+                <h3>Custom Names</h3>
+                <p>Create shortlinks with your own names</p>
             </div>
         </div>
     </section>
 
-    <script src="libs/particles.min.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/app.js"></script>
 </body>
