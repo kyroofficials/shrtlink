@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShrtSpace - Shortlink Premium</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" href="assets/icons/favicon.ico">
+</head>
+<body class="dark-theme">
+    <!-- Animated Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar slide-in-top">
+        <div class="nav-brand">
+            <img src="assets/icons/logo.svg" alt="ShrtSpace" class="logo">
+            <span>ShrtSpace</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Fitur</a>
+            <a href="#pricing">Harga</a>
+            <a href="login.html" class="btn-outline">Login</a>
+            <a href="register.html" class="btn-primary">Daftar</a>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">
+                <span class="gradient-text">Pendekin</span> Link Mu 
+                <br>Dalam <span class="typewriter"></span>
+            </h1>
+            <p class="hero-subtitle">Shortlink premium dengan analytics lengkap, custom domain, dan tampilan yang memukau</p>
+            
+            <div class="url-shortener-box pulse">
+                <div class="input-group">
+                    <input type="text" id="longUrl" placeholder="https://website-saya-yang-sangat-panjang-sekali.com/ini/juga/panjang/banget" class="url-input">
+                    <button onclick="createShortlink()" class="shorten-btn">
+                        <span>Buat Shortlink</span>
+                        <svg class="rocket-icon" viewBox="0 0 24 24">
+                            <path d="M13 3v10l8-7-8-3zm-2 0L3 6l8 3V3zM3 13l8 3v7l-8-10z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div id="result" class="result-box"></div>
+            </div>
+        </div>
+        
+        <div class="hero-visual float-animation">
+            <div class="floating-card card-1">
+                <span>shrt.space/instagram</span>
+            </div>
+            <div class="floating-card card-2">
+                <span>shrt.space/tokopedia</span>
+            </div>
+            <div class="floating-card card-3">
+                <span>shrt.space/website</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Fitur <span class="gradient-text">Premium</span></h2>
+        <div class="features-grid">
+            <div class="feature-card scale-in">
+                <div class="feature-icon">🚀</div>
+                <h3>Super Cepat</h3>
+                <p>Redirect instan dengan server global</p>
+            </div>
+            <div class="feature-card scale-in" style="animation-delay: 0.2s;">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics Detail</h3>
+                <p>Track clicks, location, device pengunjung</p>
+            </div>
+            <div class="feature-card scale-in" style="animation-delay: 0.4s;">
+                <div class="feature-icon">🎨</div>
+                <h3>Custom Name</h3>
+                <p>Buat shortlink dengan nama sendiri</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="libs/particles.min.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
