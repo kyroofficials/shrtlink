@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting - ShrtSpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/icons/favicon.ico">
+</head>
+<body class="dark-theme">
+    <div class="redirect-container">
+        <div class="redirect-card">
+            <div class="redirect-header">
+                <img src="assets/icons/logo.svg" alt="ShrtSpace" class="redirect-logo">
+                <h2>You're being redirected</h2>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <p class="redirect-message">
+                You will be redirected to the destination in <span id="countdown">5</span> seconds
+            </p>
+            
+            <!-- Ad Space -->
+            <div class="ad-space">
+                <div class="ad-label">Advertisement</div>
+                <!-- Ad content will be loaded here -->
+                <div id="adContent" class="ad-content">
+                    <p>Premium Ad Space</p>
+                </div>
+            </div>
+            
+            <div class="redirect-footer">
+                <a href="#" id="skipAd" class="skip-btn">Skip Ad</a>
+            </div>
+        </div>
+    </div>
 
+    <script src="js/redirect.js"></script>
+</body>
+</html>
