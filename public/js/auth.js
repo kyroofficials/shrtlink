@@ -1,66 +1,126 @@
-// Authentication functions
+// Enhanced auth system
+let currentUser = null;
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Check existing auth
+    currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    
+    // Auto-redirect if already logged in
+    if (currentUser && (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html'))) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
+    
+    // Redirect to login if not authenticated (except index page)
+    if (!currentUser && !window.location.pathname.includes('index.html') && !window.location.pathname.includes('login.html') && !window.location.pathname.includes('register.html')) {
+        window.location.href = 'login.html';
+        return;
+    }
+
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
 
-    // Login form handler
+    // Login handler
     if (loginForm) {
-        loginForm.addEventListener('submit', async function(e) {
+        loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            try {
-                // Demo login - always success
-                localStorage.setItem('user', JSON.stringify({
-                    email: email,
-                    username: email.split('@')[0]
-                }));
-                
-                window.location.href = 'dashboard.html';
-            } catch (error) {
-                alert('Login failed. Please try again.');
+            // Get all registered users
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Login success
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showNotification('Login successful!', 'success');
+                setTimeout(() => window.location.href = 'dashboard.html', 1000);
+            } else {
+                // Login failed
+                showNotification('Invalid email or password!', 'error');
             }
         });
     }
 
-    // Register form handler
+    // Register handler
     if (registerForm) {
-        registerForm.addEventListener('submit', async function(e) {
+        registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            try {
-                // Demo registration - always success
-                localStorage.setItem('user', JSON.stringify({
-                    username: username,
-                    email: email
-                }));
-                
-                window.location.href = 'dashboard.html';
-            } catch (error) {
-                alert('Registration failed. Please try again.');
+            // Check if email already exists
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            if (users.find(u => u.email === email)) {
+                showNotification('Email already registered!', 'error');
+                return;
             }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                username: username,
+                email: email,
+                password: password, // In real app, hash this!
+                createdAt: new Date().toISOString()
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            // Initialize user's links
+            localStorage.setItem(`userLinks_${newUser.id}`, JSON.stringify([]));
+            
+            showNotification('Registration successful!', 'success');
+            setTimeout(() => window.location.href = 'dashboard.html', 1000);
         });
     }
 });
 
-// Check if user is logged in
+// Check authentication
 function checkAuth() {
-    const user = localStorage.getItem('user');
-    if (!user) {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (!user && !window.location.pathname.includes('index.html')) {
         window.location.href = 'login.html';
         return null;
     }
-    return JSON.parse(user);
+    return user;
 }
 
 // Logout function
 function logout() {
-    localStorage.removeItem('user');
-    window.location.href = 'index.html';
+    localStorage.removeItem('currentUser');
+    showNotification('Logged out successfully!', 'success');
+    setTimeout(() => window.location.href = 'index.html', 1000);
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">×</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
 }
