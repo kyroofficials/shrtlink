@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ShrtSpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/icons/favicon.ico">
+</head>
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/icons/logo.svg" alt="ShrtSpace" class="logo">
+            <span>ShrtSpace</span>
+        </div>
+        <div class="nav-links">
+            <span id="userEmail">user@example.com</span>
+            <button onclick="logout()" class="btn-outline">Logout</button>
+        </div>
+    </nav>
 
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Your Links</h1>
+            <p>Manage and track your shortened URLs</p>
+        </div>
+
+        <!-- Create New Link -->
+        <div class="create-link-section">
+            <h3>Create New Shortlink</h3>
+            <div class="input-group">
+                <input type="text" id="originalUrl" placeholder="Enter long URL here">
+                <input type="text" id="customName" placeholder="Custom name (optional)">
+                <button onclick="createLink()" class="btn-primary">Shorten URL</button>
+            </div>
+            <div id="createResult" class="result-box"></div>
+        </div>
+
+        <!-- Links List -->
+        <div class="links-section">
+            <h3>Your Shortlinks</h3>
+            <div id="linksList" class="links-grid">
+                <!-- Links will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-section">
+            <h3>Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalClicks">0</div>
+                    <div class="stat-label">Total Clicks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalLinks">0</div>
+                    <div class="stat-label">Active Links</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
