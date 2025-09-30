@@ -59,6 +59,15 @@
     }
 }
 
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--accent-primary);
+    }
+}
+
 /* ANIMATION CLASSES */
 .fade-in-up {
     animation: fadeInUp 1s ease-out;
@@ -86,15 +95,6 @@
     border-right: 3px solid var(--accent-primary);
     white-space: nowrap;
     animation: typewriter 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes blink-caret {
-    from, to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: var(--accent-primary);
-    }
 }
 
 /* DELAYED ANIMATIONS */
