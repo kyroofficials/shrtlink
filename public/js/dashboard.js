@@ -132,4 +132,38 @@ function loadStats() {
     document.getElementById('totalLinks').textContent = links.length;
 }
 
-// Add empty state style to CSS
+function copyLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        showNotification('Link copied to clipboard!', 'success');
+    });
+}
+
+function simulateClick(linkId) {
+    const user = checkAuth();
+    if (!user) return;
+    
+    const links = JSON.parse(localStorage.getItem(`userLinks_${user.id}`) || '[]');
+    const linkIndex = links.findIndex(link => link.id === linkId);
+    
+    if (linkIndex !== -1) {
+        links[linkIndex].clicks++;
+        localStorage.setItem(`userLinks_${user.id}`, JSON.stringify(links));
+        loadUserLinks();
+        loadStats();
+        showNotification('+1 click added!', 'info');
+    }
+}
+
+function deleteLink(linkId) {
+    if (confirm('Are you sure you want to delete this link?')) {
+        const user = checkAuth();
+        if (!user) return;
+        
+        const links = JSON.parse(localStorage.getItem(`userLinks_${user.id}`) || '[]');
+        const updatedLinks = links.filter(link => link.id !== linkId);
+        localStorage.setItem(`userLinks_${user.id}`, JSON.stringify(updatedLinks));
+        loadUserLinks();
+        loadStats();
+        showNotification('Link deleted!', 'success');
+    }
+}
