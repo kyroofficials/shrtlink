@@ -1,45 +1,9 @@
-// Particles.js Background
+// Animations and interactive effects
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#6c63ff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#6c63ff",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            }
-        });
-    }
-
     // Typewriter Effect
     const typewriterElement = document.querySelector('.typewriter');
     if (typewriterElement) {
-        const texts = ['Satu Klik', 'Super Cepat', 'Gratis Selamanya'];
+        const texts = ['One Click', 'Super Fast', 'Free Forever'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -89,5 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.scale-in, .fade-in-up').forEach(el => {
         el.style.animationPlayState = 'paused';
         observer.observe(el);
+    });
+
+    // Floating cards animation
+    const floatingCards = document.querySelectorAll('.floating-card');
+    floatingCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 1}s`;
     });
 });
