@@ -1,1 +1,22 @@
+[build]
+  publish = "public"
+  functions = "functions"
 
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/r/*"
+  to = "/.netlify/functions/redirect"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# API routes
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
