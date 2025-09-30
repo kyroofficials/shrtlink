@@ -1,10 +1,14 @@
-// Enhanced dashboard with persistence
+// Enhanced dashboard with persistence - REALLY FIXED
 document.addEventListener('DOMContentLoaded', function() {
     const user = checkAuth();
     if (user) {
-        // Update user info
-        document.getElementById('userEmail').textContent = user.email;
-        document.getElementById('userName').textContent = user.username;
+        // Update user info - FIXED
+        const userEmail = document.getElementById('userEmail');
+        const userName = document.getElementById('userName');
+        
+        if (userEmail) userEmail.textContent = user.email;
+        if (userName) userName.textContent = user.username;
+        
         loadUserLinks();
         loadStats();
     }
@@ -97,6 +101,8 @@ function loadUserLinks() {
     const links = JSON.parse(localStorage.getItem(`userLinks_${user.id}`) || '[]');
     const linksList = document.getElementById('linksList');
     
+    if (!linksList) return;
+    
     if (links.length === 0) {
         linksList.innerHTML = '<div class="empty-state">No links created yet. Create your first shortlink above! 🚀</div>';
         return;
@@ -128,8 +134,11 @@ function loadStats() {
     const links = JSON.parse(localStorage.getItem(`userLinks_${user.id}`) || '[]');
     const totalClicks = links.reduce((sum, link) => sum + link.clicks, 0);
     
-    document.getElementById('totalClicks').textContent = totalClicks;
-    document.getElementById('totalLinks').textContent = links.length;
+    const totalClicksEl = document.getElementById('totalClicks');
+    const totalLinksEl = document.getElementById('totalLinks');
+    
+    if (totalClicksEl) totalClicksEl.textContent = totalClicks;
+    if (totalLinksEl) totalLinksEl.textContent = links.length;
 }
 
 function copyLink(url) {
